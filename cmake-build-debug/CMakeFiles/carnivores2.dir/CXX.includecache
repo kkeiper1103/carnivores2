@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/kkeiper/CLionProjects/carnivores2/Hunt.h
+cmath
+-
+Windows.h
+C:/Users/kkeiper/CLionProjects/carnivores2/Windows.h
+WinUser.h
+C:/Users/kkeiper/CLionProjects/carnivores2/WinUser.h
+resource.h
+C:/Users/kkeiper/CLionProjects/carnivores2/resource.h
+ddraw.h
+C:/Users/kkeiper/CLionProjects/carnivores2/ddraw.h
+d3d.h
+-
+
+C:/Users/kkeiper/CLionProjects/carnivores2/Interface.cpp
+Hunt.h
+C:/Users/kkeiper/CLionProjects/carnivores2/Hunt.h
+cstdio
+-
+strsafe.h
+-
+
+C:/Users/kkeiper/CLionProjects/carnivores2/resource.h
+

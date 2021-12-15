@@ -1,6 +1,9 @@
-#include "math.h"
-#include "windows.h"
-#include "winuser.h"
+#define INITGUID
+
+
+#include <cmath>
+#include "Windows.h"
+#include "WinUser.h"
 
 #include "resource.h"
 

@@ -1,5 +1,5 @@
-#include <windows.h>
-#include "hunt.h"
+#include <Windows.h>
+#include "Hunt.h"
 
 #define req_versionH 0x0001
 #define req_versionL 0x0002
@@ -106,7 +106,10 @@ void InitAudioSystem(HWND hw, HANDLE hlog, int  driver)
 	if ( (v1!=req_versionH) || (v2<req_versionL) )
 		DoHalt("Incorrect audio driver version.");
 
-	initaudiosystem(hw, hlog);	    	
+	initaudiosystem(hw, hlog);
+
+
+    PrintLog("Init Audio: Ok.\n");
 }
 
 void Audio_UploadGeometry()

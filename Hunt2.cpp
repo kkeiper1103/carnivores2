@@ -1,6 +1,7 @@
 #define _MAIN_
+
 #include "Hunt.h"
-#include "stdio.h"
+#include <cstdio>
 
 float rav=0;
 float rbv=0;

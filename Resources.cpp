@@ -347,7 +347,7 @@ void CreateMipMap(WORD* src, WORD* dst, int Ls, int Ld)
 
   scale*=scale;
 
-  for (y=0; y<Ld; y++)
+  for (size_t y=0; y<Ld; y++)
    for (int x=0; x<Ld; x++) {
 	   R[y][x]/=scale;
 	   G[y][x]/=scale;
@@ -606,7 +606,8 @@ void CorrectModel(TModel *mptr)
 
 	
 	int fp = 0;
-    for (f=0; f<mptr->FCount; f++) 
+    size_t f = 0;
+    for (f=0; f<mptr->FCount; f++)
 		if ( (mptr->gFace[f].Flags & (sfOpacity | sfTransparent))==0)
 		{
 			tface[fp] = mptr->gFace[f];
@@ -1400,6 +1401,7 @@ void LoadCharacters()
 		pres[Characters[c].CType] = TRUE;
 	}
 
+	size_t c = 0;
 	for (c=0; c<TotalC; c++) if (pres[c]) {
         if (!ChInfo[c].mptr) {
 		 wsprintf(logt, "HUNTDAT\\%s", DinoInfo[c].FName);
@@ -1523,7 +1525,7 @@ void ReleaseCharacterInfo(TCharacterInfo &chinfo)
      chinfo.Animation[c].aniData = NULL;
 	}
 
-	for (c = 0; c<64; c++) {
+	for (size_t c = 0; c<64; c++) {
      if (!chinfo.SoundFX[c].lpData) break;
 	 _HeapFree(Heap, 0, chinfo.SoundFX[c].lpData);
      chinfo.SoundFX[c].lpData = NULL;
@@ -1951,7 +1953,7 @@ void CreateLog()
 #ifdef _soft
 	PrintLog("CarnivoresII Soft video driver.");
 #endif
-	PrintLog(" Build v2.04. Sep.24 1999.\n");
+	PrintLog(" Build v2.05. Dec 14, 2021.\n");
 }
 
 

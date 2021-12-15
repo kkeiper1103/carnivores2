@@ -1,8 +1,8 @@
-#include <windows.h>
-#include <math.h>
+#include <Windows.h>
+#include <cmath>
 
 #define _AUDIO_
-#include "audio.h"
+#include "Audio.h"
 
 HANDLE hAudioThread;
 DWORD  AudioTId;
@@ -66,7 +66,7 @@ int InitDirectSound( HWND hwnd)
 
 
    iTotal16SD = 0;
-   for( i = 0; i < iTotalSoundDevices; i++ ) {
+   for(size_t i = 0; i < iTotalSoundDevices; i++ ) {
       LPDIRECTSOUND lpds;
       if( DirectSoundCreate( &sdd[i].Guid, &lpds, NULL ) != DS_OK ) continue;
 
@@ -203,7 +203,7 @@ SKIPSECONDARY:
 }
 
 
-void InitAudioSystem(HWND hw)
+void InitAudioSystem(HWND hw, void* a, int b)
 {   
    hwndApp = hw;
    wf.wFormatTag      = WAVE_FORMAT_PCM;
@@ -551,6 +551,9 @@ void Audio_MixAmbient3d()
 
 void Audio_MixSound(int DestAddr, int SrcAddr, int MixLen, int LVolume, int RVolume) 
 {
+    std::cout << "[Audio_MixSound] assembly not portable! Please rewrite in SDL_Mixer" << std::endl;
+
+    /**
 _asm {
        mov      edi, DestAddr                    
        mov      ecx, MixLen         
@@ -613,4 +616,5 @@ __asm {
        dec      ecx
        jnz      SOUND_CYCLE
 }
+     **/
 }

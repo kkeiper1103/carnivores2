@@ -1,5 +1,7 @@
 #include <dsound.h>
 
+#include <iostream>
+
 #ifdef _AUDIO_
    #define _SOUND_H_
 #else
@@ -67,7 +69,7 @@ void  AddVoice3dv(int, short int*, float, float, float, int);
 void SetAmbient(int, short int*, int);
 void SetAmbient3d(int, short int*, float, float, float);
 void SetAmbient3d(int, short int*, float, float, float, int);
-void InitAudioSystem(HWND);
+void InitAudioSystem(HWND, void* a, int b);
 
 int  ProcessAudio( void );
 void AudioSetCameraPosition( float, float, float,  float, float);

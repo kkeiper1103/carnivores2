@@ -1,6 +1,7 @@
 #define INITGUID
 #include "Hunt.h"
-#include "stdio.h"
+#include <cstdio>
+#include <strsafe.h>
 
 typedef struct _TMenuSet {
 	int x0, y0;
@@ -68,7 +69,35 @@ void PrintText(LPSTR s, int x, int y, int rgb)
 }
 
 void DoHalt(LPSTR Mess)
-{  
+{
+    LPVOID lpMsgBuf;
+    LPVOID lpDisplayBuf;
+    DWORD dw = GetLastError();
+
+    FormatMessage(
+            FORMAT_MESSAGE_ALLOCATE_BUFFER |
+            FORMAT_MESSAGE_FROM_SYSTEM |
+            FORMAT_MESSAGE_IGNORE_INSERTS,
+            NULL,
+            dw,
+            MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+            (LPTSTR) &lpMsgBuf,
+            0, NULL );
+
+    // Display the error message and exit the process
+    lpDisplayBuf = (LPVOID)LocalAlloc(LMEM_ZEROINIT,
+                                      (lstrlen((LPCTSTR)lpMsgBuf) + lstrlen((LPCTSTR)Mess) + 40) * sizeof(TCHAR));
+    StringCchPrintf((LPTSTR)lpDisplayBuf,
+                    LocalSize(lpDisplayBuf) / sizeof(TCHAR),
+                    TEXT("%s failed with error %d: %s"),
+                    Mess, dw, lpMsgBuf);
+
+    PrintLog(Mess);
+    PrintLog((LPSTR) lpMsgBuf);
+
+    LocalFree(lpMsgBuf);
+    LocalFree(lpDisplayBuf);
+
   AudioStop();
   Audio_Shutdown();
 
